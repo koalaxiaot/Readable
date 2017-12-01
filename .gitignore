@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+*.swp
+frontend/node_modules/
+api-server/node_modules/
