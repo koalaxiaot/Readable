@@ -1,7 +1,6 @@
 import React from 'react';
-import Button from 'material-ui/Button';
+import { withStyles, Button } from 'material-ui';
 import AddIcon from 'material-ui-icons/Add';
-import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import { showCommentDialog } from '../comment/actions';
 import { showPostDialog } from '../post/actions';

@@ -1,6 +1,7 @@
 /** component show one post or comment */
 import React from 'react';
-import { Button, Typography, Grid, withStyles } from 'material-ui';
+import { IconButton, Typography, Grid, withStyles } from 'material-ui';
+import { ModeEdit, Delete } from 'material-ui-icons';
 import Voter from './Voter';
 import { dateFormat } from '../utils/helper';
 
@@ -26,7 +27,7 @@ const styles = theme => ({
   },
   content: {
     padding: '20px'
-  },
+  }
 });
 
 const OnePost = (props) => {
@@ -42,8 +43,8 @@ const OnePost = (props) => {
         <Typography className={classes.header}>
           <span><b>{onepost.author}</b> @ {dateFormat(onepost.timestamp)}</span>
           <span>
-            <Button onClick={() => changeCurrent(onepost)}>edit</Button>
-            <Button onClick={() => deleteP(onepost.id)}>delete</Button>
+            <IconButton color="primary" onClick={() => changeCurrent(onepost)}><ModeEdit /></IconButton>
+            <IconButton color="accent" onClick={() => deleteP(onepost.id)}><Delete /></IconButton>
           </span>
         </Typography>
         <Typography className={classes.content} dangerouslySetInnerHTML={{ __html: ('' + onepost.body).replace(/(?:\r\n|\r|\n)/g, '<br />') }} />

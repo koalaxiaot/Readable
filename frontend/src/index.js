@@ -7,14 +7,13 @@ import { Provider } from 'react-redux';
 import posts from './post/reducers'
 import categories from './category/reducers'
 import comments from './comment/reducers'
-import { username, is_fetching } from './app/reducers'
+import username from './app/reducers'
 
 const reducers = combineReducers({
   posts,
   categories,
   comments,
-  username,
-  is_fetching
+  username
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

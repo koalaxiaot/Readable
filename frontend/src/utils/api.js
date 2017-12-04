@@ -1,6 +1,6 @@
 const serverUrl = process.env.REACT_APP_BACKEND || 'http://localhost:3001';
 
-const token = localStorage.token ? Math.random().toString(36).substr(-8) : localStorage.token;
+const token = localStorage.token ? localStorage.token : localStorage.token = Math.random().toString(26).substr(-8);
 const headers = {
   'Accept': 'application/json',
   'Authorization': token
@@ -91,8 +91,7 @@ export const addComment = (body, author, parentId) => {
   }).then(res => res.json());
 };
 
-export const updateComment = (id, body) => {
-  const timestamp = (new Date()).getTime();
+export const updateComment = (id, body, timestamp) => {
   return fetch(`${serverUrl}/comments/${id}`, {
     method: 'PUT',
     headers: {

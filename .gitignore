@@ -2,4 +2,5 @@ node_modules/
 .DS_Store
 *.swp
 frontend/node_modules/
+frontend/build/
 api-server/node_modules/

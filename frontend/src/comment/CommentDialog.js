@@ -25,7 +25,7 @@ class CommentDialog extends Component {
           <DialogActions>
             <Button onClick={handleClose} color="primary">Cancel</Button>
             {currentComment.id
-              ? <Button onClick={() => handleUpdate(this.t.value, currentComment.id)} color="primary">Submit</Button>
+              ? <Button onClick={() => handleUpdate(currentComment.id, this.t.value)} color="primary">Submit</Button>
               : <Button onClick={() => handleAdd(this.t.value, username, parentId)} color="primary">Submit</Button>
             }
           </DialogActions>

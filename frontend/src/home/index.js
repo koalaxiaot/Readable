@@ -6,6 +6,7 @@ import { fetchCategory } from '../category/actions';
 import PostList from '../post/PostList';
 import AddBtn from '../components/AddBtn';
 import PostDialog from '../post/PostDialog';
+import Loading from '../components/Loading';
 
 const styles = theme => ({
   button: {
@@ -19,23 +20,28 @@ const styles = theme => ({
 class Home extends Component {
 
   componentDidMount() {
-    this.props.fetchCategories();
+    this.props.categories.length === 0 && this.props.fetchCategories();
   }
 
   render() {
     const { categories, classes } = this.props;
     return (
       <div>
-        <Paper className={classes.paper}>
-          {categories.map(c => (
-            <Button component={Link} to={`/${c.path}`} key={c.name} className={classes.button} color="primary">{c.name}</Button>
-          ))}
-        </Paper>
-        <Divider />
-        <PostList />
+        {categories && categories.length > 0
+          ?
+          <div>
+            <Paper className={classes.paper}>
+              {categories.map(c => (
+                <Button component={Link} to={`/${c.path}`} key={c.name} className={classes.button} color="primary">{c.name}</Button>
+              ))}
+            </Paper>
+            <Divider />
+            <PostList />
 
-        <AddBtn isPost />
-        <PostDialog />
+            <AddBtn isPost />
+            <PostDialog />
+          </div>
+          : <Loading />}
       </div>
     )
   }

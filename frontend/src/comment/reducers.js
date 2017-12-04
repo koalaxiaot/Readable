@@ -27,8 +27,8 @@ const comments = (state = [], action) => {
       const { comment } = action;
       return [...state, comment];
     case UPDATE_COMMENT:
-      const { body } = action;
-      return state.map(comment => comment.id === id ? { ...comment, body } : comment);
+      const { body, timestamp } = action;
+      return state.map(comment => comment.id === id ? { ...comment, body, timestamp } : comment);
     case DELETE_COMMENT:
       return state.filter(comment => comment.id !== id);
     default:

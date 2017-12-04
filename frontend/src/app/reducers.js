@@ -1,5 +1,4 @@
-import { combineReducers } from 'redux';
-import { CHANGE_USERNAME, toggleFetching, IS_FETCHING } from './actions';
+import { CHANGE_USERNAME } from './actions';
 
 // store username into localStorage
 const username = (state = localStorage.username || 'koala', action) => {
@@ -13,13 +12,4 @@ const username = (state = localStorage.username || 'koala', action) => {
   }
 };
 
-const is_fetching = (state = false, action) => {
-  switch (action.type) {
-    case IS_FETCHING:
-      return action.is_fetching
-    default:
-      return state;
-  }
-};
-
-export { username, is_fetching };
+export default username;

@@ -9,6 +9,7 @@ import AddBtn from '../components/AddBtn';
 import { fetchOnePost, votePost } from './actions';
 import PostDetail from './PostDetail';
 import PostDialog from './PostDialog';
+import Loading from '../components/Loading';
 
 const styles = theme => ({
   paper: {
@@ -33,24 +34,25 @@ class Post extends Component {
     const { post, classes, match, comments, history } = this.props
     return (
       <div>
-        {post && post.id
-          ? <div>
+        {post
+          ? post.id
+            ? <div>
+              <Paper className={classes.paper}>
+                <Typography color="inherit">
+                  <Link to="/">Home</Link> / <Link to={`/${match.params.category}`}>{match.params.category}</Link> / {post.title}
+                </Typography>
+              </Paper>
 
-            <Paper className={classes.paper}>
-              <Typography color="inherit">
-                <Link to="/">Home</Link> / <Link to={`/${match.params.category}`}>{match.params.category}</Link> / {post.title}
-              </Typography>
-            </Paper>
+              <PostDetail post={post} handleVote={this.handleVote} history={history} />
+              <CommentList comments={comments} handleVote={this.handleVote} />
 
-            <PostDetail post={post} handleVote={this.handleVote} history={history} />
-            <CommentList comments={comments} handleVote={this.handleVote} />
-
-            <AddBtn isComment isPost />
-            <PostDialog />
-            <CommentDialog parentId={post.id} />
-
-          </div>
-          : null}
+              <AddBtn isComment />
+              <PostDialog />
+              <CommentDialog parentId={post.id} />
+            </div>
+            : 'not exist. Error.'
+          : <Loading />
+        }
       </div >
     );
   }

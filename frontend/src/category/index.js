@@ -4,7 +4,6 @@ import { Paper, Typography, withStyles } from 'material-ui';
 import PostList from '../post/PostList';
 import PostDialog from '../post/PostDialog';
 import AddBtn from '../components/AddBtn';
-import LoadingHOC from '../components/LoadingHOC';
 
 const styles = theme => ({
   paper: {
@@ -33,4 +32,4 @@ const Category = (props) => {
   );
 }
 
-export default LoadingHOC(withStyles(styles)(Category));
+export default withStyles(styles)(Category);

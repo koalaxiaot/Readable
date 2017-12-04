@@ -19,21 +19,21 @@ export const receivePosts = (posts) => ({
 export const fetchPosts = () => (dispatch, getState) => {
   API.getPosts().then(posts => {
     dispatch(receivePosts(posts));
-    return dispatch(sortPost(getState().posts.sortKey, getState().posts.sortOrder));
+    dispatch(sortPost(getState().posts.sortKey, getState().posts.sortOrder));
   });
 }
 
 export const fetchCatPosts = (cat) => (dispatch, getState) => {
   API.getCPosts(cat).then(posts => {
     dispatch(receivePosts(posts));
-    return dispatch(sortPost(getState().posts.sortKey, getState().posts.sortOrder));
+    dispatch(sortPost(getState().posts.sortKey, getState().posts.sortOrder));
   });
 }
 
 export const fetchOnePost = (id) => (dispatch) => {
-  API.getPost(id).then(posts => {
-    return dispatch(receivePosts([posts]));
-  });
+  API.getPost(id).then(post => {
+    post.error ? dispatch(receivePosts([{ id: '' }])) : dispatch(receivePosts([post]));
+  })
 }
 
 export const addPost = (title, body, author, category) => (dispatch) => {

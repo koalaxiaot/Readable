@@ -7,7 +7,7 @@
     "posts": [],
     "sortKey": "timestamp",
     "sortOrder": "desc",
-    "isShowPostDialog": false,
+    "isShowPostDialog": false,      # dialog to add/edit(currentPost)
     "currentPost": {}
   },
   "comments": {

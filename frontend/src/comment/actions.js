@@ -71,16 +71,18 @@ export const addComment = (body, author, parentId) => (dispatch) => (
   })
 );
 
-export const updateComment = (body, id) => (dispatch) => (
-  API.updateComment(id, body).then(comment => {
+export const updateComment = (id, body) => (dispatch) => {
+  const timestamp = (new Date()).getTime();
+  API.updateComment(id, body, timestamp).then(comment => {
     dispatch({
       type: UPDATE_COMMENT,
       id,
-      body: comment.body
+      body: comment.body,
+      timestamp: comment.timestamp
     });
     dispatch(showCommentDialog(false));
   })
-);
+};
 
 export const changeCurrentComment = (comment) => (dispatch) => {
   dispatch({
