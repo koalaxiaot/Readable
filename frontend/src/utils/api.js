@@ -1,6 +1,6 @@
 const serverUrl = process.env.REACT_APP_BACKEND || 'http://localhost:3001';
 
-const token = localStorage.token ? localStorage.token : localStorage.token = Math.random().toString(26).substr(-8);
+const token = localStorage.token ? localStorage.token : localStorage.token = Math.random().toString(36).substr(-8);
 const headers = {
   'Accept': 'application/json',
   'Authorization': token
